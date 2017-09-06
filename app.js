@@ -12,11 +12,6 @@ var OAuth2 = google.auth.OAuth2;
 var blogger = google.blogger('v3');
 
 var tokens;
-// var oauth2Client = new OAuth2(
-// 	config.ClientID,
-// 	config.ClientSecret,
-// 	"http://localhost:3000"
-// );
 
 app.use(cors());
 
@@ -24,10 +19,6 @@ app.use(function(request, response, next){
 	console.log(`${request.method} request for ${request.url}`);
 	next();
 });
-
-app.get("/Test", function(request,response){
-	response.json("tweets");
-})
 
 app.get('/createGoogleBloggerPost/title=:title/content=:content', blogPost);
 app.get("/sendPost", blogCallBack);
@@ -53,7 +44,7 @@ function blogPost(req, res, next){
 }
 
 
-function blogCallBack(req, res, next) {
+function blogCallBack(req, res) {
 	console.log(decodeURIComponent(req.query.state));
 	var params = JSON.parse(req.query.state)
 
@@ -75,7 +66,7 @@ function blogCallBack(req, res, next) {
                     'User-Agent': 'Request-Promise',
                     "Authorization": 'Bearer ' + tokens.access_token
                 },
-                json: true // Automatically parses the JSON string in the response
+                json: true
             };
             rp(options)
             .then(function (response) {

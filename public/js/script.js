@@ -53,11 +53,12 @@ $("#postForm").submit(function(event){
 		type: "get",
 		dataType:"json",
         success: function(result) {
-        	// console.log(result + "&title=dsfasfdsgadgfdsf");
+   			// console.log(result);
         	var params = {"title":title, "content":content};
         	console.log(JSON.stringify(params));
-        	window.location = result + "&state="+JSON.stringify(params);
- 	    	$("#result").text("Post was successfully sent");
+        	// window.location = result + "&state="+JSON.stringify(params);
+        	window.location = result;
+ 	    	// $("#result").text("Post was successfully sent");
         },
         error:function(error){
         	console.log(error);
