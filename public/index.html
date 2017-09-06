@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Google Blogger API</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Google Blogger API</h1>
+		<hr>
+		<h2>Post a blog post</h2>
+		<form id="postForm" method="post" action="/">
+			<div class="form-group">
+				<label>Blog Title</label>
+				<input type="text" id="title" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Content</label>
+				<textarea id="content" class="form-control" rows="10"></textarea>
+			</div>
+
+			<button class="btn btn-primary" type="submit">Submit</button>
+		</form>
+		<span id="result"></span>
+
+
+		<div id="Posts"></div>
+
+	</div>
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
