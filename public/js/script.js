@@ -1,5 +1,4 @@
 var APIKey;
-//Get Config Data
 $.ajax({
 	url: "config/config.json",
 	dataType:"json",
@@ -35,40 +34,27 @@ $("#postForm").submit(function(event){
 	var title = $("#title").val();
 	var content = $("#content").val();
 	var url = "http://localhost:3000/createGoogleBloggerPost";
-	var SendData = "";
 	if(title.length == 0){
 		alert("please enter a title");
 		return;
-	} else {
-		url += "/title="+title
-	}
+	} 
 	if(content.length == 0){
 		alert("please enter some content");
 		return;
-	} else {
-		url += "/content="+content
-	}
+	} 
 	$.ajax({
 		url: url,
-		type: "get",
+		type: "post",
+		data: { title: title, content : content},
 		dataType:"json",
         success: function(result) {
-   			// console.log(result);
-        	var params = {"title":title, "content":content};
-        	console.log(JSON.stringify(params));
-        	// window.location = result + "&state="+JSON.stringify(params);
+   			console.log(result);
         	window.location = result;
- 	    	// $("#result").text("Post was successfully sent");
         },
         error:function(error){
         	console.log(error);
         }
-
 	})
-
-
-
-
 });
 
 
